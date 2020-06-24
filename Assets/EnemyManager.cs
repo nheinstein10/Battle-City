@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Client : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
-    public NormalTank normalTank;
+    public List<Enemy> enemyTanks;
 
     public EnemySpawner spawner;
 
     private Enemy spawn;
     private void Update() {
         if(Input.GetKeyDown(KeyCode.S)) {
-            spawn = spawner.SpawnEnemy(normalTank);
+            spawn = spawner.SpawnEnemy(enemyTanks[0]);
         }
     }
 }
