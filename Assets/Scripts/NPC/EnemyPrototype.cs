@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyPrototype : MonoBehaviour
 {
     public List<Enemy> enemyTanks;
 
