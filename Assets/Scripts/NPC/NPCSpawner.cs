@@ -6,8 +6,7 @@ public class NPCSpawner : MonoBehaviour
 {
     public NPCFactory factory;
 
-    INPC normalTank;
-    INPC speedTank;
+    INPC normalTank, speedTank;
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.N)) {
