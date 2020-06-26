@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface INPC
-{
-    void Shoot();
+namespace BattleCity {
+	public interface INPC {
+		void Shoot();
+	}
 }

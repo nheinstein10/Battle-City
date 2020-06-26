@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCSpawner : MonoBehaviour
-{
-    public NPCFactory factory;
+namespace BattleCity {
+    public class NPCSpawner : MonoBehaviour {
+        public NPCFactory factory;
 
-    INPC normalTank, speedTank;
+        INPC normalTank, speedTank;
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.N)) {
-            normalTank = factory.GetNPC(NPCType.NormalTank);
-            normalTank.Shoot();
-        }
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.N)) {
+                normalTank = factory.GetNPC(NPCType.NormalTank);
+                //normalTank.Shoot();
+            }
 
-        if(Input.GetKeyDown(KeyCode.S)) {
-            speedTank = factory.GetNPC(NPCType.SpeedTank);
-            speedTank.Shoot();
+            if (Input.GetKeyDown(KeyCode.S)) {
+                speedTank = factory.GetNPC(NPCType.SpeedTank);
+                //speedTank.Shoot();
+            }
         }
     }
 }

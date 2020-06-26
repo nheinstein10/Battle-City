@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum NPCType
-{
-    NormalTank,
-    SpeedTank
+namespace BattleCity {
+	public enum NPCType {
+		NormalTank,
+		SpeedTank
+	}
 }

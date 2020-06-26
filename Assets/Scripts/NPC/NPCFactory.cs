@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCFactory : MonoBehaviour
-{
-    [SerializeField] List<Transform> spawnPoints;
+namespace BattleCity {
+    public class NPCFactory : MonoBehaviour {
+        [SerializeField] List<Transform> spawnPoints;
 
-    public INPC GetNPC(NPCType type) {
-        switch(type) {
-            case NPCType.NormalTank:
-                INPC normalTank = Instantiate(Resources.Load<NormalTank>("Prefabs/NormalTankNPC"), spawnPoints[Random.Range(0, spawnPoints.Count)]);
-                return normalTank;
-            case NPCType.SpeedTank:
-                INPC speedTank = Instantiate(Resources.Load<SpeedTank>("Prefabs/SpeedTankNPC"), spawnPoints[Random.Range(0, spawnPoints.Count)]);
-                return speedTank;
+        public INPC GetNPC(NPCType type) {
+            switch (type) {
+                case NPCType.NormalTank:
+                    INPC normalTank = Instantiate(Resources.Load<NormalTank>("Prefabs/NormalTankNPC"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
+                    return normalTank;
+                case NPCType.SpeedTank:
+                    INPC speedTank = Instantiate(Resources.Load<SpeedTank>("Prefabs/SpeedTankNPC"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
+                    return speedTank;
+            }
+
+            return null;
         }
-
-        return null;
     }
 }

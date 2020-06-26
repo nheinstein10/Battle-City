@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICopyable
-{
-    ICopyable Copy();
+namespace BattleCity {
+	public interface ICopyable {
+		ICopyable Copy();
+	}
 }
