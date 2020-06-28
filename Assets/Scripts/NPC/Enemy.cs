@@ -6,13 +6,14 @@ namespace BattleCity {
     internal delegate void EnemySpawnHandler();
     public delegate void TankShootHandler();
 
-    public class Enemy : MonoBehaviour, INPC, IMovementBehaviour, ICopyable {
+    public abstract class Enemy : MonoBehaviour, INPC, IMovementBehaviour, ICopyable {
         protected IMovementBehaviour movementBehaviour;
 
         [SerializeField] protected DirectionType directionType;
 
         #region Interface Properties
-        public float MovementSpeed => throw new System.NotImplementedException();
+        public abstract float MovementSpeed { get; set; }
+        public abstract float ShootingTimer { get; set; }
 
         #endregion
 
@@ -28,14 +29,6 @@ namespace BattleCity {
         }
         public void SetMovementBehaviour(IMovementBehaviour moveType) {
             this.movementBehaviour = moveType;
-        }
-
-        public ICopyable Copy() {
-            return Instantiate(this, NPCFactory.Instance.spawnPoints[Random.Range(0, NPCFactory.Instance.spawnPoints.Count)].position, Quaternion.identity);
-        }
-
-        public void Shoot() {
-            throw new System.NotImplementedException();
         }
 
         #region Interface Methods
@@ -57,6 +50,14 @@ namespace BattleCity {
                     transform.eulerAngles = new Vector3(0f, 0f, 180f);
                     break;
             }
+        }
+
+        public void Shoot() {
+            throw new System.NotImplementedException();
+        }
+
+        public ICopyable Copy() {
+            return Instantiate(this, NPCFactory.Instance.spawnPoints[Random.Range(0, NPCFactory.Instance.spawnPoints.Count)].position, Quaternion.identity);
         }
 
         #endregion

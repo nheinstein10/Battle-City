@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace BattleCity {
     public class MoveNormalSpeed : IMovementBehaviour {
-        private float movementSpeed = 10f;
-        public float MovementSpeed => movementSpeed;
+        private float _movementSpeed = 10f;
+
+        public float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
 
         public void UpdateDirection() {
             throw new System.NotImplementedException();

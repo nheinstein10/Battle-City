@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BattleCity {
 	public interface IMovementBehaviour {
-		float MovementSpeed { get; }
+		float MovementSpeed { get; set; }
 		void UpdateDirection();
 	}
 }

@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleCity {
-	public class ArmoredTank : Enemy, INPC, IMovementBehaviour, IEnemyShootBehaviour {
-		public float ShootingTimer { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+	public class ArmoredTank : Enemy, IEnemyShootBehaviour {
+        #region Fields
+        float _movementSpeed = 5f;
+		float _shootingTimer;
 
-		public float MovementSpeed => throw new System.NotImplementedException();
+        #endregion
 
-		public void UpdateDirection() {
-			throw new System.NotImplementedException();
-		}
+        #region Properties
+        public override float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
+		public override float ShootingTimer { get => _shootingTimer; set => _shootingTimer = value; }
 
-		public void Shoot() {
-			throw new System.NotImplementedException();
-		}
-	}
+        #endregion
+    }
 }

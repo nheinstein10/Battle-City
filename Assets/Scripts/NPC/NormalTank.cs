@@ -9,12 +9,15 @@ namespace BattleCity {
     public class NormalTank : Enemy, IEnemyShootBehaviour {
         #region Fields
         float _movementSpeed = 10f;
-        public float MovementSpeed => _movementSpeed;
-
         float _shootingTimer;
-        public float ShootingTimer { get => _shootingTimer; set => _shootingTimer = value; }
 
         Rigidbody2D rigidbody;
+
+        #endregion
+
+        #region Properties
+        public override float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
+        public override float ShootingTimer { get => _shootingTimer; set => _shootingTimer = value; }
 
         #endregion
 
@@ -24,6 +27,7 @@ namespace BattleCity {
 
         #endregion
 
+        #region MonoBehaviour Callbacks
         protected override void Start() {
             base.Start();
 
@@ -36,7 +40,6 @@ namespace BattleCity {
             TimerZero += NormalTank_TimerZero;
         }
 
-
         private void Update() {
             ShootingTimer -= Time.deltaTime;
             if(ShootingTimer <= 0) {
@@ -44,9 +47,9 @@ namespace BattleCity {
             }
         }
 
-        #region Methods
-        
+        #endregion
 
+        #region Methods
         public void Shoot() {
             Debug.Log("Normal tank shoot");
         }
@@ -64,7 +67,6 @@ namespace BattleCity {
             UpdateDirection();
             ShootingTimer = 2f;
             Debug.Log("Timer zero!");
-
         }
         #endregion
     }
