@@ -6,15 +6,13 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 
 namespace BattleCity {
-    public class NormalTank : Enemy, INPC, IMovementBehaviour, IEnemyShootBehaviour {
+    public class NormalTank : Enemy, IEnemyShootBehaviour {
         #region Fields
         float _movementSpeed = 10f;
         public float MovementSpeed => _movementSpeed;
 
         float _shootingTimer;
         public float ShootingTimer { get => _shootingTimer; set => _shootingTimer = value; }
-
-        [SerializeField] DirectionType directionType;
 
         Rigidbody2D rigidbody;
 
@@ -26,11 +24,13 @@ namespace BattleCity {
 
         #endregion
 
-        private void Start() {
+        protected override void Start() {
+            base.Start();
+
             rigidbody = GetComponent<Rigidbody2D>();
+            UpdateDirection();
 
             ShootingTimer = 2f;
-            directionType = DirectionType.Down;
 
             NormalTankShoot += OnNormalTankShoot;
             TimerZero += NormalTank_TimerZero;
@@ -38,10 +38,6 @@ namespace BattleCity {
 
 
         private void Update() {
-            //if(Input.GetKeyDown(KeyCode.Space)) {
-            //    NormalTankShoot?.Invoke(this, EventArgs.Empty);
-            //}
-
             ShootingTimer -= Time.deltaTime;
             if(ShootingTimer <= 0) {
                 TimerZero?.Invoke(this, EventArgs.Empty);
@@ -49,25 +45,7 @@ namespace BattleCity {
         }
 
         #region Methods
-        public void SetDirection() {
-            switch(directionType) {
-                case DirectionType.Up:
-                    transform.eulerAngles = new Vector3(0f, 0f, 0f);
-                    break;
-                case DirectionType.Left:
-                    transform.eulerAngles = new Vector3(0f, 0f, 90f);
-                    break;
-                case DirectionType.Down:
-                    transform.eulerAngles = new Vector3(0f, 0f, 180f);
-                    break;
-                case DirectionType.Right:
-                    transform.eulerAngles = new Vector3(0f, 0f, 270f);
-                    break;
-                default:
-                    transform.eulerAngles = new Vector3(0f, 0f, 180f);
-                    break;
-            }
-        }
+        
 
         public void Shoot() {
             Debug.Log("Normal tank shoot");
@@ -83,7 +61,7 @@ namespace BattleCity {
 
         private void NormalTank_TimerZero(object sender, EventArgs e) {
             directionType = (DirectionType)UnityEngine.Random.Range(0, 4);
-            SetDirection();
+            UpdateDirection();
             ShootingTimer = 2f;
             Debug.Log("Timer zero!");
 

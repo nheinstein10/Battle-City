@@ -5,6 +5,7 @@ using UnityEngine;
 namespace BattleCity {
 	public enum NPCType {
 		NormalTank,
-		SpeedTank
+		SpeedTank,
+		ArmoredTank
 	}
 }

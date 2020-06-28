@@ -7,7 +7,7 @@ namespace BattleCity {
         private float movementSpeed = 10f;
         public float MovementSpeed => movementSpeed;
 
-        public void SetDirection() {
+        public void UpdateDirection() {
             throw new System.NotImplementedException();
         }
     }
