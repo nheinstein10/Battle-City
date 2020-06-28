@@ -363,7 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 907872365}
   m_Layer: 0
-  m_Name: NPC
+  m_Name: -NPC-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,6 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factory: {fileID: 1502491104}
+  spawner: {fileID: 605693829}
 --- !u!1 &1502491102
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,12 +552,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1650995241}
   m_Layer: 0
-  m_Name: -Enemy Folder-
+  m_Name: -Enemy-
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1650995241
 Transform:
   m_ObjectHideFlags: 0
@@ -612,7 +613,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1887712468}
-  - component: {fileID: 1887712467}
   m_Layer: 0
   m_Name: '[Event Manager]'
   m_TagString: Untagged
@@ -620,20 +620,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1887712467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887712466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e348cbeda9a2534c9f6922b9e8ca3a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalTank: {fileID: 8581536127069417388, guid: f5491e515dff02c499260c427dfd4583,
-    type: 3}
 --- !u!4 &1887712468
 Transform:
   m_ObjectHideFlags: 0

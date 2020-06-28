@@ -8,7 +8,7 @@ namespace BattleCity {
         private float movementSpeed = 5f;
         public float MovementSpeed { get => movementSpeed; }
 
-        public void Move() {
+        public void SetDirection() {
 
         }
     }

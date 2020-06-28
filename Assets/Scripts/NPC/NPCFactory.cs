@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleCity {
-    public class NPCFactory : MonoBehaviour {
-        [SerializeField] List<Transform> spawnPoints;
+    public class NPCFactory : Singleton<NPCFactory> {
+        [SerializeField] public List<Transform> spawnPoints;
 
         public INPC GetNPC(NPCType type) {
             switch (type) {
