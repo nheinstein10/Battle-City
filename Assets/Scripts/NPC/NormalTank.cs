@@ -32,16 +32,14 @@ namespace BattleCity {
             base.Start();
 
             rigidbody = GetComponent<Rigidbody2D>();
-            UpdateDirection();
-
-            ShootingTimer = 2f;
 
             NormalTankShoot += OnNormalTankShoot;
             TimerZero += NormalTank_TimerZero;
         }
 
         private void Update() {
-            ShootingTimer -= Time.deltaTime;
+            base.Update();
+
             if(ShootingTimer <= 0) {
                 TimerZero?.Invoke(this, EventArgs.Empty);
             }

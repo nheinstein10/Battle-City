@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +18,20 @@ namespace BattleCity {
 
         #endregion
 
+        #region Events
+        public event EventHandler TimerZero;
+
+        #endregion
+
         #region MonoBehaviour Callbacks
         protected virtual void Start() {
+            ShootingTimer = 2f;
             directionType = DirectionType.Down;
+            UpdateDirection();
+        }
+
+        protected virtual void Update() {
+            ShootingTimer -= Time.deltaTime;
         }
 
         #endregion
