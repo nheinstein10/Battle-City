@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using CsvHelper;
+using System.Globalization;
 
 namespace BattleCity {
 	public interface IConfig {
@@ -10,7 +11,7 @@ namespace BattleCity {
 	}
 
 	public interface IConfigItem {
-		void ReadImplement();
+		//void ReadImplement();
 		string GetId();
 	}
 
@@ -22,6 +23,19 @@ namespace BattleCity {
 
 		public void Load() {
 			var filePath = Application.streamingAssetsPath + FileName + ".csv";
+
+			itemList = new List<T>();
+			itemDic = new Dictionary<string, T>();
+
+			using(var reader = new StreamReader(filePath)) {
+				using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture)) {
+					var records = csv.GetRecords<T>();
+					foreach(var record in records) {
+						itemList.Add(record);
+						itemDic.Add(record.GetId(), record);
+					}
+				}
+			}			
 		}
 	}
 }

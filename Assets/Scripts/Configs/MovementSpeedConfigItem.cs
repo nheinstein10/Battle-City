@@ -4,15 +4,11 @@ using UnityEngine;
 
 namespace BattleCity {
 	public class MovementSpeedConfigItem : IConfigItem {
-		public string id;
-		public float movementSpeed;
+		public string id { get; set; }
+		public float movementSpeed { get; set; }
 
 		public string GetId() {
 			return id.ToString();
-		}
-
-		public void ReadImplement() {
-			throw new System.NotImplementedException();
 		}
 	}
 }
