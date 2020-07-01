@@ -14,7 +14,7 @@ namespace BattleCity {
 		string GetId();
 	}
 
-	public abstract class Config<T> : IConfig where T : IConfigItem {
+	public abstract class Config<T> : IConfig where T : IConfigItem, new() {
 		public abstract string FileName { get; }
 
 		public List<T> itemList { get; private set; }
