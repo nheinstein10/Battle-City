@@ -22,13 +22,14 @@ namespace BattleCity {
 		public Dictionary<string, T> itemDic { get; private set; }
 
 		public void Load() {
-			var filePath = Application.streamingAssetsPath + FileName + ".csv";
+			var filePath = Application.streamingAssetsPath + "/Configs/" + FileName + ".csv";
 
 			itemList = new List<T>();
 			itemDic = new Dictionary<string, T>();
 
 			using(var reader = new StreamReader(filePath)) {
 				using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture)) {
+					csv.Configuration.Delimiter = ",";
 					var records = csv.GetRecords<T>();
 					foreach(var record in records) {
 						itemList.Add(record);
