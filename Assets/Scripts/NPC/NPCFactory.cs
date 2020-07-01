@@ -15,7 +15,7 @@ namespace BattleCity {
                     INPC speedTank = Instantiate(Resources.Load<SpeedTank>("Prefabs/SpeedTankNPC"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
                     return speedTank;
                 case NPCType.ArmoredTank:
-                    INPC armoredTank = Instantiate(Resources.Load<SpeedTank>("Prefabs/ArmoredTank"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
+                    INPC armoredTank = Instantiate(Resources.Load<ArmoredTank>("Prefabs/ArmoredTank"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
                     return armoredTank;
             }
 

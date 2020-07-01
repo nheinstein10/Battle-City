@@ -10,6 +10,8 @@ namespace BattleCity {
         float _movementSpeed = 20f;
         float _shootingTimer;
 
+        Rigidbody2D rigidbody;
+
         #endregion
 
         #region Properties
@@ -24,8 +26,10 @@ namespace BattleCity {
         #endregion
 
         #region MonoBehaviour Callbacks
-        private void Start() {
-            ShootingTimer = 2f;
+        protected override void Start() {
+            base.Start();
+
+            rigidbody = GetComponent<Rigidbody2D>();
 
             TimerZero += SpeedTank_TimerZero;
         }

@@ -30,6 +30,25 @@ namespace BattleCity {
             base.Start();
 
             rigidbody = GetComponent<Rigidbody2D>();
+
+            TimerZero += ArmoredTank_TimerZero;
+        }
+
+        protected override void Update() {
+            base.Update();
+
+            if(ShootingTimer <= 0) {
+                TimerZero?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        #endregion
+
+        #region Event Methods
+        private void ArmoredTank_TimerZero(object sender, EventArgs e) {
+            directionType = (DirectionType)UnityEngine.Random.Range(0, 4);
+            UpdateDirection();
+            ShootingTimer = 2f;
         }
 
         #endregion

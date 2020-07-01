@@ -69,7 +69,7 @@ namespace BattleCity {
         }
 
         public ICopyable Copy() {
-            return Instantiate(this, NPCFactory.Instance.spawnPoints[Random.Range(0, NPCFactory.Instance.spawnPoints.Count)].position, Quaternion.identity);
+            return Instantiate(this, NPCFactory.Instance.spawnPoints[UnityEngine.Random.Range(0, NPCFactory.Instance.spawnPoints.Count)].position, Quaternion.identity);
         }
 
         #endregion
