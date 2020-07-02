@@ -72,6 +72,10 @@ namespace BattleCity {
             return Instantiate(this, NPCFactory.Instance.spawnPoints[UnityEngine.Random.Range(0, NPCFactory.Instance.spawnPoints.Count)].position, Quaternion.identity);
         }
 
+        public void SetName(string name) {
+            this.gameObject.name = name;
+        }
+
         #endregion
     }
 }

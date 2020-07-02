@@ -5,5 +5,6 @@ using UnityEngine;
 namespace BattleCity {
 	public interface INPC {
 		void Shoot();
+		void SetName(string name);
 	}
 }
