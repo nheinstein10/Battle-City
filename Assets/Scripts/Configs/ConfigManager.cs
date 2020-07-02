@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 namespace BattleCity {
-    public class ConfigManager : MonoBehaviour {
+    public class ConfigManager : Singleton<ConfigManager> {
         public MovementSpeedConfig MovementSpeedConfig;
 
         private List<IConfig> configList = new List<IConfig>();
