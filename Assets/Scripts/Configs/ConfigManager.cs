@@ -9,7 +9,7 @@ namespace BattleCity {
 
         private List<IConfig> configList = new List<IConfig>();
 
-        private void Start() {
+        private void Awake() {
             this.Init();
         }
 
@@ -25,7 +25,7 @@ namespace BattleCity {
 
         public T Register<T>(out T config) where T : IConfig, new() {
             config = GetConfig<T>();
-            if(config != null) {
+            if (config != null) {
                 Debug.LogAssertionFormat("Config {0} duplicated!", typeof(T).Name);
                 return config;
             }
