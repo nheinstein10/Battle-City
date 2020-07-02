@@ -16,12 +16,12 @@ namespace BattleCity {
                 if (FindObjectsOfType<NormalTank>().Length != 0) {
                     normalTank = spawner.SpawnEnemy(FindObjectOfType<NormalTank>()) as INPC;
                 } else {
-                    normalTank = factory.GetNPC(NPCType.NormalTank);
+                    normalTank = factory.GetNPC(NPCType.Normal);
                 }
             }
 
             if (Input.GetKeyDown(KeyCode.S)) {
-                speedTank = factory.GetNPC(NPCType.SpeedTank);
+                speedTank = factory.GetNPC(NPCType.Speed);
             }
         }
     }

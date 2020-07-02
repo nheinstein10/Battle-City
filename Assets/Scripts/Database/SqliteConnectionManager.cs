@@ -9,8 +9,6 @@ namespace BattleCity {
 		[SerializeField] string databaseFileName;
 
 		private void Start() {
-			//var fullPath = Path.Combine(Application.dataPath, "StreamingAssets", "1.csv");
-			//Debug.Log(fullPath);
 			Debug.Log(Application.persistentDataPath);
 			if (!File.Exists(Application.persistentDataPath + "/" + "battle_city.db")) {
 				SQLiteConnection.CreateFile(Application.persistentDataPath + "/" + "battle_city.db");

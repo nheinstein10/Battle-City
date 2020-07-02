@@ -31,6 +31,8 @@ namespace BattleCity {
 
             rigidbody = GetComponent<Rigidbody2D>();
 
+            MovementSpeed = ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Speed));
+
             TimerZero += SpeedTank_TimerZero;
         }
 

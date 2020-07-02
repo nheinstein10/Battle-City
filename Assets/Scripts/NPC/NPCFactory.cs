@@ -8,13 +8,13 @@ namespace BattleCity {
 
         public INPC GetNPC(NPCType type) {
             switch (type) {
-                case NPCType.NormalTank:
+                case NPCType.Normal:
                     INPC normalTank = Instantiate(Resources.Load<NormalTank>("Prefabs/NormalTankNPC"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
                     return normalTank;
-                case NPCType.SpeedTank:
+                case NPCType.Speed:
                     INPC speedTank = Instantiate(Resources.Load<SpeedTank>("Prefabs/SpeedTankNPC"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
                     return speedTank;
-                case NPCType.ArmoredTank:
+                case NPCType.Armored:
                     INPC armoredTank = Instantiate(Resources.Load<ArmoredTank>("Prefabs/ArmoredTank"), spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
                     return armoredTank;
             }

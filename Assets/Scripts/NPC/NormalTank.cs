@@ -8,7 +8,7 @@ using DG.Tweening;
 namespace BattleCity {
     public class NormalTank : Enemy, IEnemyShootBehaviour {
         #region Fields
-        float _movementSpeed = 10f;
+        float _movementSpeed;
         float _shootingTimer;
 
         Rigidbody2D rigidbody;
@@ -32,6 +32,8 @@ namespace BattleCity {
             base.Start();
 
             rigidbody = GetComponent<Rigidbody2D>();
+
+            MovementSpeed = ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Normal));
 
             NormalTankShoot += OnNormalTankShoot;
             TimerZero += NormalTank_TimerZero;
