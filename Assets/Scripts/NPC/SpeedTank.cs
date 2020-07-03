@@ -7,7 +7,7 @@ using UnityEngine;
 namespace BattleCity {
     public class SpeedTank : Enemy, IEnemyShootBehaviour {
         #region Fields
-        float _movementSpeed = 20f;
+        float _movementSpeed;
         float _shootingTimer;
 
         Rigidbody2D rigidbody;

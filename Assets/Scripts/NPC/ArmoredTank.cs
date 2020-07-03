@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 namespace BattleCity {
 	public class ArmoredTank : Enemy, IEnemyShootBehaviour {
         #region Fields
-        float _movementSpeed = 5f;
+        float _movementSpeed;
 		float _shootingTimer;
 
         Rigidbody2D rigidbody;
