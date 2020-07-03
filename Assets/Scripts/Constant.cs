@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Constant
-{
-    // Game constants here
+namespace BattleCity {
+	public static class Constant {
+		// Game constants here
+	}
 }

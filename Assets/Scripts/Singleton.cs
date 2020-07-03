@@ -28,7 +28,6 @@ namespace BattleCity {
             if (_instance == null) {
                 _instance = this as T;
 
-                // making sure that singleton instance will persist in memory across every scene
                 DontDestroyOnLoad(this.gameObject);
             } else {
                 Destroy(gameObject);

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DirectionType
-{
-    Up = 0,
-    Left,
-    Down,
-    Right
+namespace BattleCity {
+    public enum DirectionType {
+        Up = 0,
+        Left,
+        Down,
+        Right
+    }
 }

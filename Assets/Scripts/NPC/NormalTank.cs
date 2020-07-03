@@ -21,11 +21,6 @@ namespace BattleCity {
 
         #endregion
 
-        #region Events
-        public event EventHandler NormalTankShoot;
-        public event EventHandler TimerZero;
-
-        #endregion
 
         #region MonoBehaviour Callbacks
         protected override void Start() {
@@ -34,17 +29,10 @@ namespace BattleCity {
             rigidbody = GetComponent<Rigidbody2D>();
 
             MovementSpeed = ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Normal));
-
-            NormalTankShoot += OnNormalTankShoot;
-            TimerZero += NormalTank_TimerZero;
         }
 
         private void Update() {
             base.Update();
-
-            if(ShootingTimer <= 0) {
-                TimerZero?.Invoke(this, EventArgs.Empty);
-            }
         }
 
         #endregion
@@ -54,20 +42,6 @@ namespace BattleCity {
             Debug.Log("Normal tank shoot");
         }
 
-        #endregion
-
-
-        #region Event Methods
-        public void OnNormalTankShoot(object sender, EventArgs e) {
-            this.Shoot();
-        }
-
-        private void NormalTank_TimerZero(object sender, EventArgs e) {
-            directionType = (DirectionType)UnityEngine.Random.Range(0, 4);
-            UpdateDirection();
-            ShootingTimer = 2f;
-            Debug.Log("Timer zero!");
-        }
         #endregion
     }
 }

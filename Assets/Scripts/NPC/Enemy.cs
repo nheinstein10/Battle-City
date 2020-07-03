@@ -20,6 +20,7 @@ namespace BattleCity {
 
         #region Events
         public event EventHandler TimerZero;
+        public event EventHandler TankShoot;
 
         #endregion
 
@@ -28,10 +29,16 @@ namespace BattleCity {
             ShootingTimer = 2f;
             directionType = DirectionType.Down;
             UpdateDirection();
+
+            TimerZero += OnTimerZero;
+            TankShoot += OnTankShoot;
         }
 
         protected virtual void Update() {
             ShootingTimer -= Time.deltaTime;
+            if (ShootingTimer <= 0) {
+                TimerZero?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         #endregion
@@ -74,6 +81,19 @@ namespace BattleCity {
 
         public void SetName(string name) {
             this.gameObject.name = name;
+        }
+
+        #endregion
+
+        #region Event Methods
+        private void OnTimerZero(object sender, EventArgs e) {
+            directionType = (DirectionType)UnityEngine.Random.Range(0, 4);
+            UpdateDirection();
+            ShootingTimer = 2f;
+        }
+
+        private void OnTankShoot(object sender, EventArgs e) {
+            Debug.Log("Shoot!");
         }
 
         #endregion
