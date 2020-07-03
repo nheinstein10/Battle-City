@@ -89,7 +89,7 @@ namespace BattleCity {
         private void OnTimerZero(object sender, EventArgs e) {
             directionType = (DirectionType)UnityEngine.Random.Range(0, 4);
             UpdateDirection();
-            ShootingTimer = 2f;
+            ShootingTimer = UnityEngine.Random.Range(1.5f, 4f);
         }
 
         private void OnTankShoot(object sender, EventArgs e) {
