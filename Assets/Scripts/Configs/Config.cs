@@ -15,22 +15,22 @@ namespace BattleCity {
 		string GetId();
 	}
 
-	public abstract class Config<T> : IConfig where T : IConfigItem, new() {
+	public abstract class Config<TConfigItem> : IConfig where TConfigItem : IConfigItem, new() {
 		public abstract string FileName { get; }
 
-		public List<T> itemList { get; private set; }
-		public Dictionary<string, T> itemDic { get; private set; }
+		public List<TConfigItem> itemList { get; private set; }
+		public Dictionary<string, TConfigItem> itemDic { get; private set; }
 
 		public void Load() {
 			var filePath = Application.streamingAssetsPath + "/Configs/" + FileName + ".csv";
 
-			itemList = new List<T>();
-			itemDic = new Dictionary<string, T>();
+			itemList = new List<TConfigItem>();
+			itemDic = new Dictionary<string, TConfigItem>();
 
 			using(var reader = new StreamReader(filePath)) {
 				using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture)) {
 					csv.Configuration.Delimiter = ",";
-					var records = csv.GetRecords<T>();
+					var records = csv.GetRecords<TConfigItem>();
 					foreach(var record in records) {
 						itemList.Add(record);
 						itemDic.Add(record.GetId(), record);

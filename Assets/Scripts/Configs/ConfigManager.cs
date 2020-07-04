@@ -19,18 +19,18 @@ namespace BattleCity {
             LoadConfigs();
         }
 
-        public T GetConfig<T>() where T : IConfig {
-            return (T)configList.FirstOrDefault(m => m.GetType() == typeof(T));
+        public TConfig GetConfig<TConfig>() where TConfig : IConfig {
+            return (TConfig)configList.FirstOrDefault(m => m.GetType() == typeof(TConfig));
         }
 
-        public T Register<T>(out T config) where T : IConfig, new() {
-            config = GetConfig<T>();
+        public TConfig Register<TConfig>(out TConfig config) where TConfig : IConfig, new() {
+            config = GetConfig<TConfig>();
             if (config != null) {
-                Debug.LogAssertionFormat("Config {0} duplicated!", typeof(T).Name);
+                Debug.LogAssertionFormat("Config {0} duplicated!", typeof(TConfig).Name);
                 return config;
             }
 
-            config = new T();
+            config = new TConfig();
             configList.Add(config);
 
             return config;

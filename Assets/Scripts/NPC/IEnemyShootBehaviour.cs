@@ -4,6 +4,6 @@ using UnityEngine;
 
 namespace BattleCity {
 	public interface IEnemyShootBehaviour {
-		float ShootingTimer { get; set; }
+		float DirectionTimer { get; set; }
 	}
 }

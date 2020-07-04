@@ -8,15 +8,15 @@ namespace BattleCity {
 	public class ArmoredTank : Enemy, IEnemyShootBehaviour {
         #region Fields
         float _movementSpeed;
-		float _shootingTimer;
-
-        Rigidbody2D rigidbody;
+		float _directionTimer;
+        float _shootingTimer;
 
         #endregion
 
         #region Properties
         public override float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
-		public override float ShootingTimer { get => _shootingTimer; set => _shootingTimer = value; }
+		public override float DirectionTimer { get => _directionTimer; set => _directionTimer = value; }
+        public override float ShootingTimer { get => _shootingTimer; set => _shootingTimer = value; }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace BattleCity {
         protected override void Start() {
             base.Start();
 
-            rigidbody = GetComponent<Rigidbody2D>();
+            Rigidbody = GetComponent<Rigidbody2D>();
 
             MovementSpeed = ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Armored));
         }

@@ -12,42 +12,52 @@ namespace BattleCity {
 
         [SerializeField] protected DirectionType directionType;
 
+        protected Rigidbody2D Rigidbody { get; set; }
+
         #region Interface Properties
         public abstract float MovementSpeed { get; set; }
+        public abstract float DirectionTimer { get; set; }
         public abstract float ShootingTimer { get; set; }
 
         #endregion
 
         #region Events
-        public event EventHandler TimerZero;
-        public event EventHandler TankShoot;
+        public event EventHandler DirectionTimerZero;
+        public event EventHandler<ShootingEventArgs> ShootingTimerZero;
+
+        public class ShootingEventArgs : EventArgs {
+            public string shootingMessage;
+        }
 
         #endregion
 
         #region MonoBehaviour Callbacks
         protected virtual void Start() {
+            DirectionTimer = 2f;
             ShootingTimer = 2f;
             directionType = DirectionType.Down;
             UpdateDirection();
 
-            TimerZero += OnTimerZero;
-            TankShoot += OnTankShoot;
+            DirectionTimerZero += OnDirectionTimerZero;
+            ShootingTimerZero += OnShootingTimerZero;
         }
 
         protected virtual void Update() {
+            DirectionTimer -= Time.deltaTime;
+            if (DirectionTimer <= 0) {
+                DirectionTimerZero?.Invoke(this, EventArgs.Empty);
+            }
+
             ShootingTimer -= Time.deltaTime;
-            if (ShootingTimer <= 0) {
-                TimerZero?.Invoke(this, EventArgs.Empty);
+            if(ShootingTimer <= 0) {
+                ShootingTimerZero?.Invoke(this, new ShootingEventArgs() { shootingMessage = "Shoot!" });
             }
         }
 
         #endregion
 
-        public void ApplyMovement() {
-            movementBehaviour.UpdateDirection();
-        }
-        public void SetMovementBehaviour(IMovementBehaviour moveType) {
-            this.movementBehaviour = moveType;
+        protected void Move() {
+
         }
 
         #region Interface Methods
@@ -86,14 +96,15 @@ namespace BattleCity {
         #endregion
 
         #region Event Methods
-        private void OnTimerZero(object sender, EventArgs e) {
+        private void OnDirectionTimerZero(object sender, EventArgs e) {
             directionType = (DirectionType)UnityEngine.Random.Range(0, 4);
             UpdateDirection();
-            ShootingTimer = UnityEngine.Random.Range(1.5f, 4f);
+            DirectionTimer = UnityEngine.Random.Range(1.5f, 4f);
         }
 
-        private void OnTankShoot(object sender, EventArgs e) {
-            Debug.Log("Shoot!");
+        private void OnShootingTimerZero(object sender, ShootingEventArgs e) {
+            Debug.Log(e.shootingMessage);
+            ShootingTimer = 2f;
         }
 
         #endregion
