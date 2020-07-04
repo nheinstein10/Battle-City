@@ -21,7 +21,7 @@ namespace BattleCity {
 
             Rigidbody = GetComponent<Rigidbody2D>();
 
-            _movementSpeed = ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Normal));
+            MovementSpeed = ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Normal));
         }
 
         protected override void Update() {
