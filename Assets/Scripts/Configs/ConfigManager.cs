@@ -6,6 +6,7 @@ using System.Linq;
 namespace BattleCity {
     public class ConfigManager : Singleton<ConfigManager> {
         public MovementSpeedConfig MovementSpeedConfig;
+        public LevelConfig LevelConfig;
 
         private List<IConfig> configList = new List<IConfig>();
 
@@ -15,6 +16,7 @@ namespace BattleCity {
 
         public void Init() {
             Register(out MovementSpeedConfig);
+            Register(out LevelConfig);
 
             LoadConfigs();
         }

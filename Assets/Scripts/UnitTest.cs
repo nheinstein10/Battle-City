@@ -8,6 +8,9 @@ namespace BattleCity {
 			Debug.Log(ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Normal)));
 			Debug.Log(ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Speed)));
 			Debug.Log(ConfigManager.Instance.MovementSpeedConfig.GetMovementSpeedById(nameof(NPCType.Armored)));
+
+			Debug.Log(ConfigManager.Instance.LevelConfig.GetConfigItemByLevel(1).NormalTankNumber);
+			Debug.Log(ConfigManager.Instance.LevelConfig.GetConfigItemByLevel(4).NormalTankNumber);
 		}
 	}
 }
