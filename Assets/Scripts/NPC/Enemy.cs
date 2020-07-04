@@ -33,6 +33,8 @@ namespace BattleCity {
 
         #region MonoBehaviour Callbacks
         protected virtual void Start() {
+            Rigidbody = GetComponent<Rigidbody2D>();
+
             DirectionTimer = 2f;
             ShootingTimer = 2f;
             directionType = DirectionType.Down;
@@ -52,13 +54,18 @@ namespace BattleCity {
             if(ShootingTimer <= 0) {
                 ShootingTimerZero?.Invoke(this, new ShootingEventArgs() { shootingMessage = "Shoot!" });
             }
+
+            Move();
         }
 
         #endregion
 
+        #region Methods
         protected void Move() {
-
+            Rigidbody.MovePosition(transform.position + transform.up * MovementSpeed * Time.deltaTime);
         }
+
+        #endregion
 
         #region Interface Methods
         public void UpdateDirection() {
