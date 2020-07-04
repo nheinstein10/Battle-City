@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.ComponentModel;
+using System;
 
 namespace BattleCity {
-	public class ModelBase : INotifyPropertyChanged {
-		public event PropertyChangedEventHandler PropertyChanged;
+	public class ModelBase {
+		public event EventHandler<PropertyChangedEventArgs> PropertyChanged;
 
-		public void RaisedPropertyChanged(string propertyName) {
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		public class PropertyChangedEventArgs : EventArgs {
+			public string propertyName;
+
+			public PropertyChangedEventArgs(string _propertyName) {
+				propertyName = _propertyName;
+			}
+		}
+
+		public void RaisePropertyDataChange(string dataName) {
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(dataName));
 		}
 	}
 }
