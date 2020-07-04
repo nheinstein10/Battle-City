@@ -6,13 +6,6 @@ using UnityEngine;
 
 namespace BattleCity {
     public class SpeedTank : Enemy, IEnemyShootBehaviour {
-        #region Fields
-        float _movementSpeed;
-        float _directionTimer;
-        float _shootingTimer;
-
-        #endregion
-
         #region Properties
         public override float DirectionTimer { get => _directionTimer; set => _directionTimer = value; }
         public override float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }

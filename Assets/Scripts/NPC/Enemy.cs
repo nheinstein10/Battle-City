@@ -14,6 +14,13 @@ namespace BattleCity {
 
         protected Rigidbody2D Rigidbody { get; set; }
 
+        #region Fields
+        protected float _movementSpeed;
+        protected float _directionTimer;
+        protected float _shootingTimer;
+
+        #endregion
+
         #region Interface Properties
         public abstract float MovementSpeed { get; set; }
         public abstract float DirectionTimer { get; set; }

@@ -7,13 +7,6 @@ using DG.Tweening;
 
 namespace BattleCity {
     public class NormalTank : Enemy, IEnemyShootBehaviour {
-        #region Fields
-        float _movementSpeed;
-        float _directionTimer;
-        float _shootingTimer;
-
-        #endregion
-
         #region Properties
         public override float MovementSpeed { get => _movementSpeed; set => _movementSpeed = value; }
         public override float DirectionTimer { get => _directionTimer; set => _directionTimer = value; }
