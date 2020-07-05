@@ -7,10 +7,26 @@ using System;
 
 namespace BattleCity {
     public class ModelManager : Singleton<ModelManager> {
+        GameStateModel GameStateModel;
+
         private List<ModelBase> modelList = new List<ModelBase>();
 
-        public void Init() {
+        public void Init(bool reset = false) {
+            RegisterModel(out GameStateModel);
 
+            LoadData(reset);
+        }
+
+        protected void LoadData(bool reset) {
+            foreach(var model in modelList) {
+                if(reset || !ReadModel(model)) {
+                    model.InitBaseData();
+                }
+            }
+
+            foreach(var model in modelList) {
+                model.OnAfterInit();
+            }
         }
 
         public T GetModel<T>() where T : ModelBase {

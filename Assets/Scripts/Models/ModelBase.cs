@@ -46,6 +46,8 @@ namespace BattleCity {
 			RaisePropertyDataChange("");
 		}
 
+		public virtual void InitBaseData() { }
+
 		public virtual void OnAfterInit() { }
 	}
 }
