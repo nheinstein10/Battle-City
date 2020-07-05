@@ -28,5 +28,24 @@ namespace BattleCity {
 		public void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
 			Debug.LogAssertion(e.propertyName);
 		}
+
+		public virtual string GetModelDataJson() {
+			string dataJson = "";
+			try {
+				dataJson = JsonConvert.SerializeObject(this, Formatting.Indented);
+			} catch(Exception e) {
+				Debug.LogAssertionFormat("JsonConvert failed! {0}", this.GetType().Name);
+				Debug.LogError(e.Message);
+			}
+
+			return dataJson;
+		}
+
+		public virtual void InitWithDataJson(string dataJson) {
+			JsonConvert.PopulateObject(dataJson, this);
+			RaisePropertyDataChange("");
+		}
+
+		public virtual void OnAfterInit() { }
 	}
 }
