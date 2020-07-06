@@ -10,10 +10,6 @@ namespace BattleCity {
 
         private List<IConfig> configList = new List<IConfig>();
 
-        //private void Awake() {
-        //    this.Init();
-        //}
-
         public void Init() {
             Register(out MovementSpeedConfig);
             Register(out LevelConfig);

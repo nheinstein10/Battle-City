@@ -6,8 +6,10 @@ using Newtonsoft.Json;
 using System;
 
 namespace BattleCity {
+    public class Storage : PlayerPrefs { }
+
     public class ModelManager : Singleton<ModelManager> {
-        GameStateModel GameStateModel;
+        public GameStateModel GameStateModel;
 
         private List<ModelBase> modelList = new List<ModelBase>();
 
@@ -52,7 +54,7 @@ namespace BattleCity {
 
         protected void WriteModel(ModelBase model) {
             var dataJson = model.GetModelDataJson();
-            PlayerPrefs.SetString(GetKeyName(model.GetType()), dataJson);
+            Storage.SetString(GetKeyName(model.GetType()), dataJson);
         }
 
         public bool ReadModel<T>() where T : ModelBase {
@@ -60,7 +62,7 @@ namespace BattleCity {
         }
 
         protected bool ReadModel(ModelBase model) {
-            var dataJson = PlayerPrefs.GetString(GetKeyName(model.GetType()), "");
+            var dataJson = Storage.GetString(GetKeyName(model.GetType()), "");
             if (dataJson == "" || dataJson == "{}") {
                 return false;
             }

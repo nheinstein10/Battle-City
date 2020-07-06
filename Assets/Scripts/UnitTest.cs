@@ -11,6 +11,14 @@ namespace BattleCity {
 
 			Debug.Log(ConfigManager.Instance.LevelConfig.GetConfigItemByLevel(1).NormalTankNumber);
 			Debug.Log(ConfigManager.Instance.LevelConfig.GetConfigItemByLevel(4).NormalTankNumber);
+
+			Debug.Log(ModelManager.Instance.GameStateModel.CurrentLevel);
+		}
+
+		private void Update() {
+			if(Input.GetKeyDown(KeyCode.U)) {
+				ModelManager.Instance.GameStateModel.CurrentLevel++;
+			}
 		}
 	}
 }

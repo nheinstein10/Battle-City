@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ProjectBase;
 
 namespace BattleCity {
 	public class MainGame : AppBase {
