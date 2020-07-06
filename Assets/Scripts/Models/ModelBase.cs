@@ -21,8 +21,8 @@ namespace BattleCity {
 			}
 		}
 
-		public void RaisePropertyDataChange(Type dataName) {
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(dataName));
+		public void RaisePropertyDataChange(Type modelType) {
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(modelType));
 		}
 
 		public void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
