@@ -14,19 +14,19 @@ namespace BattleCity {
 		}
 
 		public class PropertyChangedEventArgs : EventArgs {
-			public string propertyName;
+			public Type modelType;
 
-			public PropertyChangedEventArgs(string _propertyName) {
-				propertyName = _propertyName;
+			public PropertyChangedEventArgs(Type _modelType) {
+				modelType = _modelType;
 			}
 		}
 
-		public void RaisePropertyDataChange(string dataName) {
+		public void RaisePropertyDataChange(Type dataName) {
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(dataName));
 		}
 
 		public void OnPropertyChanged(object sender, PropertyChangedEventArgs e) {
-			Debug.LogAssertion(e.propertyName);
+			Debug.LogWarning(e.modelType);
 		}
 
 		public virtual string GetModelDataJson() {
@@ -43,7 +43,7 @@ namespace BattleCity {
 
 		public virtual void InitWithDataJson(string dataJson) {
 			JsonConvert.PopulateObject(dataJson, this);
-			RaisePropertyDataChange("");
+			RaisePropertyDataChange(default);
 		}
 
 		public virtual void InitBaseData() { }

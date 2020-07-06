@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 
 namespace BattleCity {
     public class GameStateModel : ModelBase {
+        public GameStateModel() : base() { }
+
         [JsonProperty]
         private int _currentLevel;
 
@@ -15,8 +17,17 @@ namespace BattleCity {
                     return;
                 }
                 _currentLevel = value;
-                RaisePropertyDataChange(nameof(CurrentLevel));
+                RaisePropertyDataChange(this.GetType());
+                ModelManager.Instance.WriteModel<GameStateModel>();
             }
+        }
+
+        public override void InitBaseData() {
+            CurrentLevel = 1;
+        }
+
+        public override void OnAfterInit() {
+            
         }
     }
 }

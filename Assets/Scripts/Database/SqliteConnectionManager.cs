@@ -9,7 +9,7 @@ namespace BattleCity {
 		[SerializeField] string databaseFileName;
 
 		private void Start() {
-			Debug.Log(Application.persistentDataPath);
+			//Debug.Log(Application.persistentDataPath);
 			if (!File.Exists(Application.persistentDataPath + "/" + "battle_city.db")) {
 				SQLiteConnection.CreateFile(Application.persistentDataPath + "/" + "battle_city.db");
 			}

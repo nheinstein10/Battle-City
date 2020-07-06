@@ -19,7 +19,7 @@ namespace BattleCity {
 
         protected void LoadData(bool reset) {
             foreach(var model in modelList) {
-                if(reset || !ReadModel(model)) {
+                if(reset || ReadModel(model) == false) {
                     model.InitBaseData();
                 }
             }
