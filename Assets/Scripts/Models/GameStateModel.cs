@@ -18,7 +18,7 @@ namespace BattleCity {
                 }
                 _currentLevel = value;
                 RaisePropertyDataChange(this.GetType());
-                ModelManager.Instance.WriteModel<GameStateModel>();
+                GameManager.Instance.Models.WriteModel<GameStateModel>();
             }
         }
 

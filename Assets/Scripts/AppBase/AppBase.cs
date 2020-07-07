@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleCity {
-	public abstract class AppBase : Singleton<AppBase> {
+	public abstract class AppBase : MonoBehaviour {
 		protected virtual void Awake() {
 			OnInit();
 		}

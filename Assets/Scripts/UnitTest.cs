@@ -12,7 +12,7 @@ namespace BattleCity {
 			Debug.Log(ConfigManager.Instance.LevelConfig.GetConfigItemByLevel(1).NormalTankNumber);
 			Debug.Log(ConfigManager.Instance.LevelConfig.GetConfigItemByLevel(4).NormalTankNumber);
 
-			Debug.Log(ModelManager.Instance.GameStateModel.CurrentLevel);
+			Debug.Log("Current level: " + GameManager.Instance.Models.GameStateModel.CurrentLevel);
 		}
 
 		private void Update() {
