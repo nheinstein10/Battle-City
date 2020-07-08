@@ -22,8 +22,11 @@ namespace BattleCity {
         }
 
         public class States {
+            public STPlayerSpawn Spawn { get; private set; }
+            public STPlayerDie Die { get; private set; }
             public States(Player player, StateMachine smPlayer) {
-
+                Spawn = new STPlayerSpawn(player, smPlayer);
+                Die = new STPlayerDie(player, smPlayer);
             }
         }
     }
