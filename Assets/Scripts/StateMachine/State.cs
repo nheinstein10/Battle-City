@@ -12,9 +12,9 @@ namespace BattleCity {
 
 		public virtual void Enter() { }
 
-		public virtual void LogicUpdate() { }
+		public virtual void LogicUpdate(float deltaTime) { }
 
-		public virtual void PhysicsUpdate() { }
+		public virtual void PhysicsUpdate(float deltaTime) { }
 
 		public virtual void Exit() { }
 	}

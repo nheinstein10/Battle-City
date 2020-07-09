@@ -10,15 +10,24 @@ namespace BattleCity {
         public StateMachine SM_Player { get; private set; }
         public States states { get; private set; }
 
-        public static event System.Action<Player> onPlayerSpawn;
-        public static event System.Action<Player> onPlayerDie;
+        public static event System.Action<Player> PlayerSpawn;
+        public static event System.Action<Player> PlayerDie;
 
         private void Update() {
-            
+            SM_Player.CurrentState.LogicUpdate(Time.deltaTime);
         }
 
         private void FixedUpdate() {
-            
+            SM_Player.CurrentState.PhysicsUpdate(Time.fixedDeltaTime);
+        }
+
+        public void Init() {
+
+        }
+
+        public void Spawn() {
+            SM_Player.ChangeState(states.Spawn);
+            PlayerSpawn?.Invoke(this);
         }
 
         public class States {
