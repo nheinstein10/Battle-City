@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5924629666898746142}
-  - component: {fileID: 8581536127069417388}
   - component: {fileID: 8528060389450759108}
+  - component: {fileID: 7260931336433388415}
   m_Layer: 0
-  m_Name: NormalTank
+  m_Name: PlayerTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,19 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!114 &8581536127069417388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924629666898746140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8571ee6b8b125dc4b8d472ead873e735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directionType: 0
 --- !u!50 &8528060389450759108
 Rigidbody2D:
   serializedVersion: 4
@@ -68,6 +55,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7260931336433388415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924629666898746140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa1ab93877119945a9821512c4cb9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!1 &5924629667011593767
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95af4adec247b5949b3ef69fba05b1a2, type: 3}
-  m_Color: {r: 0.968165, g: 0.9811321, b: 0.85617656, a: 1}
+  m_Color: {r: 0.8616593, g: 0.9433962, b: 0.15574935, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

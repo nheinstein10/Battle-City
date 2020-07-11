@@ -10,6 +10,8 @@ namespace BattleCity {
         public StateMachine SM_Player { get; private set; }
         public States states { get; private set; }
 
+        public bool isDie => SM_Player?.CurrentState == states.Die;
+
         public static event System.Action<Player> PlayerSpawn;
         public static event System.Action<Player> PlayerDie;
 
@@ -22,7 +24,7 @@ namespace BattleCity {
         }
 
         public void Init() {
-
+            SM_Player.Initialize(states.Spawn);
         }
 
         public void Spawn() {
@@ -32,9 +34,11 @@ namespace BattleCity {
 
         public class States {
             public STPlayerSpawn Spawn { get; private set; }
+            public STPlayerMoving Moving { get; private set; }
             public STPlayerDie Die { get; private set; }
             public States(Player player, StateMachine smPlayer) {
                 Spawn = new STPlayerSpawn(player, smPlayer);
+                Moving = new STPlayerMoving(player, smPlayer);
                 Die = new STPlayerDie(player, smPlayer);
             }
         }
