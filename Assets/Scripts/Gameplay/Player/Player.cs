@@ -24,8 +24,13 @@ namespace BattleCity {
         }
 
         public void Init() {
-            SM_Player = new StateMachine();
-            SM_Player.Initialize(states.Spawn);
+            if (SM_Player == null) {
+                SM_Player = new StateMachine();
+                states = new States(this, SM_Player);
+                SM_Player.Initialize(states.Spawn);
+            } else {
+                SM_Player.ChangeState(states.Spawn);
+            }
         }
 
         public void Spawn() {
