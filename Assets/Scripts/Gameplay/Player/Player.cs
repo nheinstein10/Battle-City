@@ -24,6 +24,7 @@ namespace BattleCity {
         }
 
         public void Init() {
+            SM_Player = new StateMachine();
             SM_Player.Initialize(states.Spawn);
         }
 
@@ -34,11 +35,13 @@ namespace BattleCity {
 
         public class States {
             public STPlayerSpawn Spawn { get; private set; }
-            public STPlayerMoving Moving { get; private set; }
+            public STPlayerIdle Idle { get; private set; }
+            public STPlayerMoving Move { get; private set; }
             public STPlayerDie Die { get; private set; }
             public States(Player player, StateMachine smPlayer) {
                 Spawn = new STPlayerSpawn(player, smPlayer);
-                Moving = new STPlayerMoving(player, smPlayer);
+                Idle = new STPlayerIdle(player, smPlayer);
+                Move = new STPlayerMoving(player, smPlayer);
                 Die = new STPlayerDie(player, smPlayer);
             }
         }

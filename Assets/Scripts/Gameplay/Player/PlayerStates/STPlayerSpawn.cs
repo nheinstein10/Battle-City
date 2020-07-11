@@ -12,7 +12,7 @@ namespace BattleCity {
 		}
 
 		public override void LogicUpdate(float deltaTime) {
-			agent.SM_Player.ChangeState(agent.states.Die); // for test Change State function
+			agent.SM_Player.ChangeState(agent.states.Move); // for test Change State function
 		}
 	}
 }
