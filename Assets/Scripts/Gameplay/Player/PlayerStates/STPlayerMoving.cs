@@ -16,7 +16,9 @@ namespace BattleCity {
         }
 
         public override void LogicUpdate(float deltaTime) {
-            PlayerRigidBody.MovePosition(agent.transform.position + agent.transform.up * playerMovementSpeed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.UpArrow)) {
+                PlayerRigidBody.MovePosition(agent.transform.position + agent.transform.up * playerMovementSpeed * Time.deltaTime);
+            }
         }
     }
 }

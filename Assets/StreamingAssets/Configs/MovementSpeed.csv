@@ -1,4 +1,5 @@
 ID,Movement_Speed
-Normal,5
-Speed,8.5
-Armored,2.5
+Player,10
+Normal,8
+Speed,15
+Armored,5

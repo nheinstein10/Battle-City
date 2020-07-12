@@ -4,6 +4,6 @@ using UnityEngine;
 
 namespace BattleCity {
 	public static class Constant {
-		// Game constants here
+		public static string PLAYER_TANK_ID = "Player";
 	}
 }
