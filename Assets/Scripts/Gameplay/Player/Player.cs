@@ -41,12 +41,12 @@ namespace BattleCity {
         public class States {
             public STPlayerSpawn Spawn { get; private set; }
             public STPlayerIdle Idle { get; private set; }
-            public STPlayerMoving Move { get; private set; }
+            public STPlayerMove Move { get; private set; }
             public STPlayerDie Die { get; private set; }
             public States(Player player, StateMachine smPlayer) {
                 Spawn = new STPlayerSpawn(player, smPlayer);
                 Idle = new STPlayerIdle(player, smPlayer);
-                Move = new STPlayerMoving(player, smPlayer);
+                Move = new STPlayerMove(player, smPlayer);
                 Die = new STPlayerDie(player, smPlayer);
             }
         }
