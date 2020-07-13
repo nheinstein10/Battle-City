@@ -20,7 +20,7 @@ namespace BattleCity {
         }
 
         public override void Enter() {
-            ChangeStateTimerZero += STPlayerMoving_OnChangeStateTimerZero;
+            ChangeStateTimerZero += STPlayerMove_OnChangeStateTimerZero;
         }
 
         public override void LogicUpdate(float deltaTime) {
@@ -35,7 +35,7 @@ namespace BattleCity {
         }
 
         #region Event Methods
-        private void STPlayerMoving_OnChangeStateTimerZero() {
+        private void STPlayerMove_OnChangeStateTimerZero() {
             Debug.Log("OnChangeStateTimerZero");
             agent.SM_Player.ChangeState(agent.states.Idle);
             changeStateTimer = 2f;
