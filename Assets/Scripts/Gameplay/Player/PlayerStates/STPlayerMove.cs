@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,16 @@ namespace BattleCity {
         float changeStateTimer = 2f;
 
         #region Events
-        public event Action ChangeStateTimerZero;
+        public event System.Action ChangeStateTimerZero;
+        public event EventHandler<DirectionChangeEventArgs> DirectionChange;
+
+        public class DirectionChangeEventArgs : EventArgs {
+            public DirectionType DirectionType { get; set; }
+
+            public DirectionChangeEventArgs(DirectionType _directionType) {
+                DirectionType = _directionType;
+            }
+        }
 
         #endregion
 
@@ -21,17 +31,27 @@ namespace BattleCity {
 
         public override void Enter() {
             ChangeStateTimerZero += STPlayerMove_OnChangeStateTimerZero;
+            DirectionChange += STPlayerMove_OnDirectionChange;
         }
 
         public override void LogicUpdate(float deltaTime) {
-            changeStateTimer -= Time.deltaTime;
-            if(changeStateTimer <= 0) {
-                ChangeStateTimerZero?.Invoke();
+            if(Input.GetKeyDown(KeyCode.UpArrow)) {
+                DirectionChange?.Invoke(this, new DirectionChangeEventArgs(DirectionType.Up));
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+                DirectionChange?.Invoke(this, new DirectionChangeEventArgs(DirectionType.Left));
+            } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+                DirectionChange?.Invoke(this, new DirectionChangeEventArgs(DirectionType.Down));
+            } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+                DirectionChange?.Invoke(this, new DirectionChangeEventArgs(DirectionType.Right));
             }
 
-            if (Input.GetKey(KeyCode.UpArrow)) {
-                PlayerRigidBody.MovePosition(agent.transform.position + agent.transform.up * playerMovementSpeed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.RightArrow)) {
+                MoveForward();
             }
+        }
+
+        public void MoveForward() {
+            PlayerRigidBody.MovePosition(agent.transform.position + agent.transform.up * playerMovementSpeed * Time.deltaTime);
         }
 
         #region Event Methods
@@ -41,6 +61,9 @@ namespace BattleCity {
             changeStateTimer = 2f;
         }
 
+        private void STPlayerMove_OnDirectionChange(object sender, DirectionChangeEventArgs e) {
+            agent.UpdateDirection(e.DirectionType);
+        }
 
         #endregion
     }

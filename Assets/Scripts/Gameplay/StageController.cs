@@ -24,7 +24,7 @@ namespace BattleCity {
 		}
 
 		private void LoadMap() {
-
+			var mapFilePath = "Game/Map/Level_" + GameManager.Instance.Models.GameStateModel.CurrentLevel;
 		}
 
 		private void SpawnPlayer() {

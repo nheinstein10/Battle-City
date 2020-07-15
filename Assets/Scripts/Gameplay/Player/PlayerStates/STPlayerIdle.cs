@@ -8,11 +8,11 @@ namespace BattleCity {
         }
 
         public override void Enter() {
-            
+            Debug.Log("Idle state");
         }
 
         public override void LogicUpdate(float deltaTime) {
-            
+            //Debug.Log("Idling");
         }
     }
 }

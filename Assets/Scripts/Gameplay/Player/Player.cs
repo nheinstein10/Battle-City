@@ -38,6 +38,26 @@ namespace BattleCity {
             PlayerSpawn?.Invoke(this);
         }
 
+        public void UpdateDirection(DirectionType _directionType) {
+            switch (_directionType) {
+                case DirectionType.Up:
+                    transform.eulerAngles = new Vector3(0f, 0f, 0f);
+                    break;
+                case DirectionType.Left:
+                    transform.eulerAngles = new Vector3(0f, 0f, 90f);
+                    break;
+                case DirectionType.Down:
+                    transform.eulerAngles = new Vector3(0f, 0f, 180f);
+                    break;
+                case DirectionType.Right:
+                    transform.eulerAngles = new Vector3(0f, 0f, 270f);
+                    break;
+                default:
+                    transform.eulerAngles = new Vector3(0f, 0f, 180f);
+                    break;
+            }
+        }
+
         public class States {
             public STPlayerSpawn Spawn { get; private set; }
             public STPlayerIdle Idle { get; private set; }
