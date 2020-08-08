@@ -13,6 +13,7 @@ namespace BattleCity {
 
         #region Events
         public event System.Action ChangeStateTimerZero;
+        public event System.Action ChangeToIdleState;
         public event EventHandler<DirectionChangeEventArgs> DirectionChange;
 
         public class DirectionChangeEventArgs : EventArgs {
@@ -30,7 +31,9 @@ namespace BattleCity {
         }
 
         public override void Enter() {
+            Debug.Log("Move state");
             ChangeStateTimerZero += STPlayerMove_OnChangeStateTimerZero;
+            ChangeToIdleState += STPlayerMove_OnChangeToIdleState;
             DirectionChange += STPlayerMove_OnDirectionChange;
         }
 
@@ -59,6 +62,10 @@ namespace BattleCity {
             Debug.Log("OnChangeStateTimerZero");
             agent.SM_Player.ChangeState(agent.states.Idle);
             changeStateTimer = 2f;
+        }
+
+        private void STPlayerMove_OnChangeToIdleState() {
+            agent.SM_Player.ChangeState(agent.states.Idle);
         }
 
         private void STPlayerMove_OnDirectionChange(object sender, DirectionChangeEventArgs e) {
