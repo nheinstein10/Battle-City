@@ -17,6 +17,10 @@ namespace BattleCity {
 
         private void Update() {
             SM_Player.CurrentState.LogicUpdate(Time.deltaTime);
+
+            if (Input.GetButtonDown("Fire1")) {
+                Shoot();
+            }
         }
 
         private void FixedUpdate() {
@@ -55,6 +59,16 @@ namespace BattleCity {
                 default:
                     transform.eulerAngles = new Vector3(0f, 0f, 180f);
                     break;
+            }
+        }
+
+        public void Shoot() {
+            Bullet bullet = BulletPooler.Instance.GetPooledObject();
+            if(bullet != null) {
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = transform.rotation;
+                bullet.gameObject.SetActive(true);
+                bullet.Bullet_OnActive();
             }
         }
 

@@ -654,6 +654,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &926474922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 926474923}
+  m_Layer: 0
+  m_Name: '{Bullet Pool Container}'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &926474923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926474922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1021211862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1204,7 @@ GameObject:
   - component: {fileID: 1933822084}
   - component: {fileID: 1933822085}
   m_Layer: 0
-  m_Name: '[Bullet Pool]'
+  m_Name: '[Object Pool Manager]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1210,6 +1240,7 @@ MonoBehaviour:
   objectToPool: {fileID: 8800922997469046227, guid: cdb2b86ce517744459bd4bd40cdb42d6,
     type: 3}
   amountToPool: 20
+  bulletPoolContainter: {fileID: 926474922}
 --- !u!1 &2145918521
 GameObject:
   m_ObjectHideFlags: 0

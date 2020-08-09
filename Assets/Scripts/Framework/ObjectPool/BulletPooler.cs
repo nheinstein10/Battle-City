@@ -4,31 +4,26 @@ using UnityEngine.UI;
 
 namespace BattleCity {
     public interface PoolObject {
+        void DeactivateAfterSeconds(float seconds);
     }
 
-    public class BulletPooler : MonoBehaviour {
-        public static BulletPooler Instance { get; set; }
+    public class BulletPooler : Singleton<BulletPooler> {
         public List<Bullet> pooledObjects;
         public Bullet objectToPool;
         public int amountToPool;
 
-        protected virtual void Awake() {
-            if(Instance == null) {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            } else {
-                Destroy(gameObject);
-            }
-        }
+        [SerializeField] GameObject bulletPoolContainter;
 
         protected virtual void Start() {
             pooledObjects = new List<Bullet>();
             for(int i = 0; i < amountToPool; i++) {
-                Bullet bullet = Instantiate<Bullet>(objectToPool);
+                Bullet bullet = Instantiate<Bullet>(objectToPool, bulletPoolContainter.transform);
                 bullet.gameObject.SetActive(false);
                 pooledObjects.Add(bullet);
             } 
         }
+
+        
 
         public virtual Bullet GetPooledObject() {
             for(int i = 0; i < pooledObjects.Count; i++) {
